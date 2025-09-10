@@ -39,6 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
         _passwordController.text = _registeredPassword ?? '';
       });
 
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Usuario registrado exitosamente')),
       );

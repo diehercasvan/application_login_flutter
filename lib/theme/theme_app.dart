@@ -16,11 +16,13 @@ class AppTheme {
       foregroundColor: Colors.white,
     ),
     textTheme: const TextTheme(
+      // ignore: deprecated_member_use
       headline6: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.bold,
         color: Colors.black,
       ),
+      // ignore: deprecated_member_use
       bodyText2: TextStyle(
         fontSize: 16,
         color: Colors.black87,
