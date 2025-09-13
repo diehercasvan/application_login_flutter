@@ -16,6 +16,8 @@ class _UserFormScreenState extends State<UserFormScreen> {
       TextEditingController();
   final TextEditingController _emailController = TextEditingController();
 
+  String patternEmail = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$';
+
   void _register() {
     if (_formKey.currentState!.validate()) {
       if (_passwordController.text != _confirmPasswordController.text) {
@@ -82,8 +84,8 @@ class _UserFormScreenState extends State<UserFormScreen> {
                   if (value == null || value.isEmpty) {
                     return 'Por favor ingrese un email';
                   }
-                  if (!value.contains('@')) {
-                    return 'Ingrese un email válido';
+                  if (!RegExp(patternEmail).hasMatch(value)) {
+                    return 'Ingrese un email válido correo@gmail.com';
                   }
                   return null;
                 },

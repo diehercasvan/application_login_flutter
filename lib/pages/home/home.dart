@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../../widgets/appbar.dart';
 import '../../widgets/navigation_drawer.dart';
 import '../../widgets/navigation_bottom.dart';
-import '../user/user.dart';
-import '../auth/change_password.dart';
+import '../settings/settings_screen.dart';
+import '../profile/profile.dart';
 import '../auth/login.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -32,8 +32,10 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     _pages = [
       HomeContent(username: widget.username),
-      UserScreen(username: widget.username, password: widget.password),
-      const ChangePasswordScreen(),
+      //UserScreen(username: widget.username, password: widget.password),
+      const ProfileScreen(),
+      //const ChangePasswordScreen(),
+      const SettingsScreen(),
     ];
   }
 
@@ -127,7 +129,10 @@ class HomeContent extends StatelessWidget {
                 children: [
                   Icon(Icons.home, size: 50, color: Colors.blue),
                   SizedBox(height: 10),
-                  Text('Esta es la pantalla principal de la aplicación'),
+                  Center(
+                    child:
+                        Text('Esta es la pantalla principal de la aplicación'),
+                  ),
                   SizedBox(height: 10),
                   Text(
                     'Usa el menú lateral o la barra de navegación inferior para explorar las diferentes secciones.',
@@ -147,7 +152,8 @@ class HomeContent extends StatelessWidget {
             children: [
               _buildFeatureCard(Icons.person, 'Perfil', Colors.blue),
               _buildFeatureCard(Icons.settings, 'Configuración', Colors.green),
-              _buildFeatureCard(Icons.notifications, 'Notificaciones', Colors.orange),
+              _buildFeatureCard(
+                  Icons.notifications, 'Notificaciones', Colors.orange),
               _buildFeatureCard(Icons.help, 'Ayuda', Colors.purple),
             ],
           ),

@@ -14,7 +14,9 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
+  String patternEmail = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$';
+  String patternPassword =
+      r'^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$';
   String? _registeredUsername;
   String? _registeredPassword;
 
@@ -90,6 +92,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   if (value == null || value.isEmpty) {
                     return 'Por favor ingrese su usuario';
                   }
+                  if (!RegExp(patternEmail).hasMatch(value)) {
+                    return 'Ingrese un email válido correo@gmail.com';
+                  }
                   return null;
                 },
               ),
@@ -105,6 +110,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor ingrese su contraseña';
+                  }
+                  if (!RegExp(patternPassword).hasMatch(value)) {
+                    return 'La contraseña debe tener, entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.';
                   }
                   return null;
                 },
