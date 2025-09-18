@@ -32,9 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     _pages = [
       HomeContent(username: widget.username),
-      //UserScreen(username: widget.username, password: widget.password),
       const ProfileScreen(),
-      //const ChangePasswordScreen(),
       const SettingsScreen(),
     ];
   }

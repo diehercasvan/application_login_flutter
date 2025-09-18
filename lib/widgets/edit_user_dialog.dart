@@ -253,9 +253,7 @@ class _EditUserDialogState extends State<EditUserDialog> {
                 ],
               ),
             ),
-
             const SizedBox(height: 24),
-
             // Botones
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

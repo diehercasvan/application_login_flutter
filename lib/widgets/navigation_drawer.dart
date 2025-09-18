@@ -85,10 +85,11 @@ class CustomDrawer extends StatelessWidget {
         _buildListTile(
           context,
           Icons.person,
-          'Mi Perfil',
+          'Perfil',
           1,
           currentIndex == 1,
         ),
+        const Divider(),
         _buildListTile(
           context,
           Icons.settings,
@@ -96,7 +97,6 @@ class CustomDrawer extends StatelessWidget {
           2,
           currentIndex == 2,
         ),
-        const Divider(),
         _buildListTile(
           context,
           Icons.notifications,

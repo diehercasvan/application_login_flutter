@@ -18,6 +18,14 @@ class _UserFormScreenState extends State<UserFormScreen> {
 
   String patternEmail = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$';
 
+  // Listas para perfiles y estados
+  final List<String> _perfiles = ['Administrador', 'Usuario', 'Invitado'];
+  final List<String> _estados = ['Activo', 'Inactivo', 'Pendiente'];
+
+  // Valores seleccionados
+  String? _perfilSeleccionado;
+  String? _estadoSeleccionado;
+
   void _register() {
     if (_formKey.currentState!.validate()) {
       if (_passwordController.text != _confirmPasswordController.text) {
@@ -27,10 +35,27 @@ class _UserFormScreenState extends State<UserFormScreen> {
         return;
       }
 
+      // Validar que se haya seleccionado un perfil y estado
+      if (_perfilSeleccionado == null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Por favor seleccione un perfil')),
+        );
+        return;
+      }
+
+      if (_estadoSeleccionado == null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Por favor seleccione un estado')),
+        );
+        return;
+      }
+
       final userData = {
         'username': _usernameController.text,
         'password': _passwordController.text,
         'email': _emailController.text,
+        'perfil': _perfilSeleccionado,
+        'estado': _estadoSeleccionado,
       };
 
       Navigator.pop(context, userData);
@@ -91,6 +116,33 @@ class _UserFormScreenState extends State<UserFormScreen> {
                 },
               ),
               const SizedBox(height: 20),
+              // Dropdown para seleccionar perfil
+              DropdownButtonFormField<String>(
+                value: _perfilSeleccionado,
+                decoration: const InputDecoration(
+                  labelText: 'Perfil',
+                  prefixIcon: Icon(Icons.assignment_ind),
+                  border: OutlineInputBorder(),
+                ),
+                items: _perfiles.map((String perfil) {
+                  return DropdownMenuItem<String>(
+                    value: perfil,
+                    child: Text(perfil),
+                  );
+                }).toList(),
+                onChanged: (String? nuevoValor) {
+                  setState(() {
+                    _perfilSeleccionado = nuevoValor;
+                  });
+                },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor seleccione un perfil';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 20),
               TextFormField(
                 controller: _passwordController,
                 decoration: const InputDecoration(
@@ -121,6 +173,33 @@ class _UserFormScreenState extends State<UserFormScreen> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor confirme su contraseña';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 20),
+              // Dropdown para seleccionar estado
+              DropdownButtonFormField<String>(
+                value: _estadoSeleccionado,
+                decoration: const InputDecoration(
+                  labelText: 'Estado',
+                  prefixIcon: Icon(Icons.toggle_on),
+                  border: OutlineInputBorder(),
+                ),
+                items: _estados.map((String estado) {
+                  return DropdownMenuItem<String>(
+                    value: estado,
+                    child: Text(estado),
+                  );
+                }).toList(),
+                onChanged: (String? nuevoValor) {
+                  setState(() {
+                    _estadoSeleccionado = nuevoValor;
+                  });
+                },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor seleccione un estado';
                   }
                   return null;
                 },
