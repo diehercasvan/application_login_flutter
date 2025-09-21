@@ -36,7 +36,7 @@ class CustomDrawer extends StatelessWidget {
           end: Alignment.bottomRight,
           colors: [
             Theme.of(context).primaryColor,
-            Theme.of(context).primaryColor.withOpacity(0.8),
+            Theme.of(context).primaryColor.withAlpha(08),
           ],
         ),
       ),
@@ -64,7 +64,7 @@ class CustomDrawer extends StatelessWidget {
           Text(
             'usuario@demo.com',
             style: TextStyle(
-              color: Colors.white.withOpacity(0.8),
+              color: Colors.white.withAlpha(08),
             ),
           ),
         ],
@@ -89,34 +89,41 @@ class CustomDrawer extends StatelessWidget {
           1,
           currentIndex == 1,
         ),
+        _buildListTile(
+          context,
+          Icons.supervised_user_circle,
+          'Cliente',
+          2,
+          currentIndex == 2,
+        ),
         const Divider(),
         _buildListTile(
           context,
           Icons.settings,
           'Configuración',
-          2,
-          currentIndex == 2,
+          3,
+          currentIndex == 3,
         ),
         _buildListTile(
           context,
           Icons.notifications,
           'Notificaciones',
-          3,
-          false,
+          4,
+          currentIndex == 4,
         ),
         _buildListTile(
           context,
           Icons.help,
           'Ayuda',
-          4,
-          false,
+          5,
+          currentIndex == 4,
         ),
         _buildListTile(
           context,
           Icons.info,
           'Acerca de',
           5,
-          false,
+          currentIndex == 4,
         ),
         const Divider(),
         _buildLogoutTile(context),
@@ -152,7 +159,7 @@ class CustomDrawer extends StatelessWidget {
           : null,
       onTap: () => onItemSelected(index),
       selected: isSelected,
-      selectedTileColor: Theme.of(context).primaryColor.withOpacity(0.1),
+      selectedTileColor: Theme.of(context).primaryColor.withAlpha(01),
     );
   }
 

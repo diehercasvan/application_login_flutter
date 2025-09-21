@@ -112,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     return 'Por favor ingrese su contraseña';
                   }
                   if (!RegExp(patternPassword).hasMatch(value)) {
-                    return 'La contraseña debe tener, entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.';
+                    return 'La contraseña debe tener:\n -Entre 8 y 16 caracteres\n -Al menos un dígito numérico\n -Al menos una minúscula\n -Al menos una mayúscula\n -Al menos un caracter no alfanumérico.';
                   }
                   return null;
                 },

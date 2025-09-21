@@ -123,8 +123,18 @@ class _ClientsManagementScreenState extends State<ClientsManagementScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
-          title: 'Gestión de Clientes', showBackButton: true),
+      appBar: AppBar(
+        title: const Text('Cliente'),
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add, color: Colors.white),
+            onPressed: _addClient,
+            tooltip: 'Agregar información',
+          ),
+        ],
+      ),
       body: _clients.isEmpty
           ? Center(
               child: Column(

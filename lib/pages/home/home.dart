@@ -4,7 +4,9 @@ import '../../widgets/navigation_drawer.dart';
 import '../../widgets/navigation_bottom.dart';
 import '../settings/settings_screen.dart';
 import '../profile/profile.dart';
+import '../customer/customer.dart';
 import '../auth/login.dart';
+import '../splash/splash_maintenance.dart';
 
 class HomeScreen extends StatefulWidget {
   final String username;
@@ -33,6 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
     _pages = [
       HomeContent(username: widget.username),
       const ProfileScreen(),
+      const ClientsManagementScreen(),
       const SettingsScreen(),
     ];
   }
@@ -96,9 +99,11 @@ class _HomeScreenState extends State<HomeScreen> {
       case 1:
         return 'Perfil';
       case 2:
+        return 'Clientes';
+      case 3:
         return 'Configuración';
       default:
-        return 'Mi App';
+        return 'Módulo en Construcción';
     }
   }
 }

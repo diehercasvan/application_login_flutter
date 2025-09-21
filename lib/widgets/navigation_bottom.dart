@@ -29,6 +29,10 @@ class BottomNavigation extends StatelessWidget {
           label: 'Perfil',
         ),
         BottomNavigationBarItem(
+          icon: Icon(Icons.supervised_user_circle),
+          label: 'Cliente',
+        ),
+        BottomNavigationBarItem(
           icon: Icon(Icons.settings),
           label: 'Configuración',
         ),
