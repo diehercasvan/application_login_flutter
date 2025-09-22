@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import '../../widgets/appbar.dart';
 import '../../widgets/navigation_drawer.dart';
 import '../../widgets/navigation_bottom.dart';
-import '../settings/settings_screen.dart';
+
 import '../profile/profile.dart';
 import '../customer/customer.dart';
+import '../settings/settings_screen.dart';
+import '../notifications/notifications.dart';
+import '../help/help.dart';
+import '../about/about.dart';
 import '../auth/login.dart';
-import '../splash/splash_maintenance.dart';
 
 class HomeScreen extends StatefulWidget {
   final String username;
@@ -37,6 +40,9 @@ class _HomeScreenState extends State<HomeScreen> {
       const ProfileScreen(),
       const ClientsManagementScreen(),
       const SettingsScreen(),
+      const NotificationsScreen(),
+      const HelpScreen(),
+      const AboutScreen(),
     ];
   }
 

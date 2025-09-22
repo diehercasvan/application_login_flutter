@@ -18,13 +18,13 @@ class _UserFormScreenState extends State<UserFormScreen> {
 
   String patternEmail = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$';
 
-  // Listas para perfiles y estados
-  final List<String> _perfiles = ['Administrador', 'Usuario', 'Invitado'];
-  final List<String> _estados = ['Activo', 'Inactivo', 'Pendiente'];
+  // Listas para profilees y statuss
+  final List<String> _profilees = ['Administrador', 'Usuario', 'Invitado'];
+  final List<String> _statuss = ['Activo', 'Inactivo', 'Pendiente'];
 
   // Valores seleccionados
-  String? _perfilSeleccionado;
-  String? _estadoSeleccionado;
+  String? _profileSeleccionado;
+  String? _statusSeleccionado;
 
   void _register() {
     if (_formKey.currentState!.validate()) {
@@ -35,17 +35,17 @@ class _UserFormScreenState extends State<UserFormScreen> {
         return;
       }
 
-      // Validar que se haya seleccionado un perfil y estado
-      if (_perfilSeleccionado == null) {
+      // Validar que se haya seleccionado un profile y status
+      if (_profileSeleccionado == null) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Por favor seleccione un perfil')),
+          const SnackBar(content: Text('Por favor seleccione un profile')),
         );
         return;
       }
 
-      if (_estadoSeleccionado == null) {
+      if (_statusSeleccionado == null) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Por favor seleccione un estado')),
+          const SnackBar(content: Text('Por favor seleccione un status')),
         );
         return;
       }
@@ -54,8 +54,8 @@ class _UserFormScreenState extends State<UserFormScreen> {
         'username': _usernameController.text,
         'password': _passwordController.text,
         'email': _emailController.text,
-        'perfil': _perfilSeleccionado,
-        'estado': _estadoSeleccionado,
+        'profile': _profileSeleccionado,
+        'status': _statusSeleccionado,
       };
 
       Navigator.pop(context, userData);
@@ -116,28 +116,28 @@ class _UserFormScreenState extends State<UserFormScreen> {
                 },
               ),
               const SizedBox(height: 20),
-              // Dropdown para seleccionar perfil
+              // Dropdown para seleccionar profile
               DropdownButtonFormField<String>(
-                value: _perfilSeleccionado,
+                value: _profileSeleccionado,
                 decoration: const InputDecoration(
-                  labelText: 'Perfil',
+                  labelText: 'profile',
                   prefixIcon: Icon(Icons.assignment_ind),
                   border: OutlineInputBorder(),
                 ),
-                items: _perfiles.map((String perfil) {
+                items: _profilees.map((String profile) {
                   return DropdownMenuItem<String>(
-                    value: perfil,
-                    child: Text(perfil),
+                    value: profile,
+                    child: Text(profile),
                   );
                 }).toList(),
                 onChanged: (String? nuevoValor) {
                   setState(() {
-                    _perfilSeleccionado = nuevoValor;
+                    _profileSeleccionado = nuevoValor;
                   });
                 },
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Por favor seleccione un perfil';
+                    return 'Por favor seleccione un profile';
                   }
                   return null;
                 },
@@ -178,28 +178,28 @@ class _UserFormScreenState extends State<UserFormScreen> {
                 },
               ),
               const SizedBox(height: 20),
-              // Dropdown para seleccionar estado
+              // Dropdown para seleccionar status
               DropdownButtonFormField<String>(
-                value: _estadoSeleccionado,
+                value: _statusSeleccionado,
                 decoration: const InputDecoration(
-                  labelText: 'Estado',
+                  labelText: 'status',
                   prefixIcon: Icon(Icons.toggle_on),
                   border: OutlineInputBorder(),
                 ),
-                items: _estados.map((String estado) {
+                items: _statuss.map((String status) {
                   return DropdownMenuItem<String>(
-                    value: estado,
-                    child: Text(estado),
+                    value: status,
+                    child: Text(status),
                   );
                 }).toList(),
                 onChanged: (String? nuevoValor) {
                   setState(() {
-                    _estadoSeleccionado = nuevoValor;
+                    _statusSeleccionado = nuevoValor;
                   });
                 },
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Por favor seleccione un estado';
+                    return 'Por favor seleccione un status';
                   }
                   return null;
                 },

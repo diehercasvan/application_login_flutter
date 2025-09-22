@@ -36,6 +36,18 @@ class BottomNavigation extends StatelessWidget {
           icon: Icon(Icons.settings),
           label: 'Configuración',
         ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.notifications),
+          label: 'Notificaciones',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.help),
+          label: 'Ayuda',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.info),
+          label: 'Acerca de',
+        ),
       ],
     );
   }
